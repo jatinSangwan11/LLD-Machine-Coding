@@ -77,6 +77,58 @@ Do not advance mechanically. If an earlier decision proves incorrect, return to
 the relevant stage and record what changed. A small problem may combine stages
 when doing so does not hide an important skill.
 
+## Behavior-First Domain Modeling
+
+Do not use mechanical noun extraction as the primary class-design technique.
+Nouns may establish domain vocabulary, but a noun is not automatically a class
+and a verb is not automatically a method.
+
+Model from behavior and responsibility:
+
+1. Write the main happy-path scenario as observable steps.
+2. Identify inputs, outputs, decisions, state transitions, and invariants.
+3. Add important failure scenarios and requirement changes.
+4. Assign responsibility to the collaborator with the relevant knowledge or
+   state; add a coordinator only when coordination is itself a responsibility.
+5. Let objects and interfaces emerge from those responsibilities.
+6. Test the proposed model against the scenarios before committing to classes.
+
+Treat early candidate objects as hypotheses. Look for useful concepts that the
+requirements never stated as nouns, and reject nouns with no meaningful identity
+or behavior in this model.
+
+## Language And Teaching Consistency
+
+Use simple, concrete language by default. Do not introduce terms such as
+"domain," "aggregate," "port," "adapter," "vertical slice," or similar jargon
+unless the term materially helps the learner. When a technical term is useful,
+first explain it in ordinary language and connect it to the current code.
+
+Prefer phrases such as:
+
+- "the parking problem and its rules" instead of "the domain"
+- "objects and their jobs" instead of "domain entities and responsibilities"
+- "one complete working behavior" instead of "vertical slice"
+- "the code that calls this operation" instead of "external actor/port"
+
+Keep the teaching path consistent:
+
+1. Clarify the important requirements.
+2. Write one successful flow in plain language.
+3. Write a test for that complete behavior.
+4. Implement the minimum code required to pass it.
+5. Add important failures and edge cases.
+6. Observe concrete design pain before introducing SOLID, dependency injection,
+   or a pattern.
+7. Refactor and explain the newly relevant principle in simple language.
+
+Do not switch between bottom-up object construction and behavior-first work
+without explicitly explaining why the change is necessary. Maintain one
+"Current Implementation Assignment" in `current_context.md`. Before giving new
+coding work, verify that it extends or completes that assignment. If the
+assignment must change, acknowledge the earlier direction, explain the reason,
+and replace it clearly rather than leaving conflicting instructions.
+
 ## Progressive Hint System
 
 Give no hint until the learner asks for one or is genuinely blocked. Increase
