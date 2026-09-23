@@ -1,10 +1,15 @@
 # LLD Learning Progress
 
-Last updated: 2026-09-09
+Last updated: 2026-09-15
 
 ## Current Readiness
 
-Problem 01 is in progress. The parking-entry flow now handles compatible-spot
+Problem 02 (Job Scheduler) is the active mock interview. The one-time flow now
+covers registration, time ordering, automatic condition-based waiting,
+executor delegation, successful and failed execution, and lifecycle shutdown
+with 9 passing tests. Scheduler-specific API errors are also explicit; retry
+handling is next. Problem 01 remains paused. Its
+parking-entry flow handles compatible-spot
 selection, unavailable parking, duplicate entry, multiple floors, stable
 floor/spot ordering, typed vehicle categories, ticket creation time, and active
 ticket storage. Codex wrote the initial happy flow and corrected mechanical
@@ -39,6 +44,23 @@ and trade-off discussion rather than name recognition alone.
 None.
 
 ## Attempted Problems
+
+### Problem 02: Job Scheduler — in progress
+
+- Current stage: automatic one-time success and failure paths implemented;
+  learner explanation and retry behavior next
+- Scope: one-time and fixed-interval jobs, cancellation, pause/resume, status,
+  retries, concurrent workers, and in-memory single-process execution
+- Design: no architecture or patterns selected yet
+- Implementation: registration, ID lookup, min-heap ordering, condition-based
+  background dispatch, executor delegation, success state, and shutdown are
+  implemented with injected clock/executor boundaries
+- Tests: 9 passing tests cover registration, API failures, ordering, due/future
+  behavior, empty-queue wakeup, newly earlier job wakeup, and failure recording
+- Open modeling decision: separate the reusable job definition from each
+  scheduled occurrence if their identities and lifecycles require it
+- Hint used: Level 1 framework for compact requirement notes and interview
+  sequencing
 
 ### Problem 01: Parking Lot — in progress
 
@@ -152,6 +174,56 @@ Not assessed.
   information-owner rule and parking allocation example.
 
 ## Session History
+
+### 2026-09-14 — Job Scheduler requirements
+
+- Started a mock LLD interview for an unfamiliar job-scheduler problem.
+- Clarified functional requirements, timing semantics, concurrency, retry
+  behavior, and the first-version scope.
+- Practiced compact requirement notes using use cases, rules, constraints, out
+  of scope, open questions, and a deferred failure list.
+- Narrated the successful submission-to-execution flow and corrected ownership
+  of retry orchestration and client-notification scope.
+- Created a code-free scaffold for Problem 02. Responsibility modeling is next.
+
+### 2026-09-15 — Job Scheduler registration test
+
+- Added the first pytest for the one-time registration happy path.
+- Verified generated-ID lookup, scheduled metadata, and that registration does
+  not execute client work; result: 1 passed.
+- Time-ordered insertion is the next behavior.
+
+### 2026-09-15 — Job Scheduler due execution slice
+
+- Added clock and executor boundaries so timing and worker delegation can be
+  tested without sleeping or real threads.
+- Implemented due-time comparison, heap removal, delegation, execution, and
+  successful status update for one job.
+- Added due-job and future-job tests; full result: 4 passed.
+- Background timed waiting, real thread-pool lifecycle, synchronization,
+  failures, retries, and recurrence remain pending.
+
+### 2026-09-15 — Job Scheduler automatic dispatcher
+
+- Added one background dispatcher thread and condition-variable synchronization
+  for empty and timed waits.
+- `schedule` now wakes the dispatcher after an atomic dictionary/heap update;
+  newly earlier due work is reconsidered immediately.
+- Added explicit `start` and `shutdown` lifecycle and executor shutdown.
+- Added two deterministic background-dispatch tests; full result: 6 passed.
+
+### 2026-09-15 — Job Scheduler failure state
+
+- Added an execution boundary that catches ordinary client-job exceptions,
+  records the original exception, and transitions the scheduled job from
+  `WORKING` to `FAILED` without adding retry behavior prematurely.
+- Added a focused failure test; full result: 7 passed.
+- Codex implemented this slice at the learner's explicit request. The learner's
+  next task is to explain the `try`/`except`/`else` transition before retry is
+  introduced.
+- Added `JobNotFoundError` and `SchedulerShutdownError` under a common scheduler
+  exception base, with tests for unknown lookup and post-shutdown scheduling;
+  full result: 9 passed.
 
 ### 2026-09-09 — Parking-entry flow
 

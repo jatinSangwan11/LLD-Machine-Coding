@@ -1,0 +1,2 @@
+"""Vending machine interview exercise."""
+
