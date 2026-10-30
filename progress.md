@@ -1,261 +1,105 @@
-# LLD Learning Progress
+# Machine-Coding Curriculum Progress
 
-Last updated: 2026-09-15
+Last updated: 2026-10-30
 
-## Current Readiness
+## Source of truth and scope
 
-Problem 02 (Job Scheduler) is the active mock interview. The one-time flow now
-covers registration, time ordering, automatic condition-based waiting,
-executor delegation, successful and failed execution, and lifecycle shutdown
-with 9 passing tests. Scheduler-specific API errors are also explicit; retry
-handling is next. Problem 01 remains paused. Its
-parking-entry flow handles compatible-spot
-selection, unavailable parking, duplicate entry, multiple floors, stable
-floor/spot ordering, typed vehicle categories, ticket creation time, and active
-ticket storage. Codex wrote the initial happy flow and corrected mechanical
-issues in the new ticket contract; the learner identified the need for the
-ticket object, enum, entry time, and ticket lookup. Scores use a 1–5 scale and
-require observable learner work.
+The learner selected [ashishps1/awesome-low-level-design](https://github.com/ashishps1/awesome-low-level-design) as the
+source of truth for repository-covered requirements and solution comparisons.
+This is the consolidated curriculum checked on 2026-10-30; it is not a live sync.
 
-Immediate target: practical interview readiness by Friday, 2026-09-11 at
-12:00 PM IST. Preparation is temporarily fast-tracked; breadth that does not
-materially improve Friday's performance remains on the post-interview roadmap.
-After the Friday interview, resume the original long-term learning pace and full
-coverage goals. The temporary deadline changes prioritization only; it does not
-replace or narrow the repository's overall objective.
+Coverage: 33 problem documents, 3 additional solution-only topics, 5 original-only
+problems, and 9 README-linked concurrency exercises: 50 unique exercises plus
+one final random mock. The original first ten problems retain their order.
 
-Full-roadmap target: 2026-09-30. By that date, aim to complete practical,
-problem-driven coverage of all five SOLID principles and all listed design and
-engineering patterns. Completion requires implementation/refactoring, tests,
-and trade-off discussion rather than name recognition alone.
+Duplicates across our list and the repository are counted once: LRU Cache,
+Parking Lot, Elevator System, Vending Machine, and Splitwise. Language
+implementations and alternate Hotel/Concert solution folders are not new problems.
+Coffee Vending Machine remains a separate variant with its own requirements.
+Task Management is distinct from Job Scheduler; Pub Sub is distinct from
+Notification System; Course Registration is distinct from Online Learning.
 
-| Skill | Score | Evidence |
-| --- | ---: | --- |
-| Requirements and clarification | 3/5 | Asked relevant questions with a Level 1 scaffold and summarized the core lifecycle; missed several rules and scope boundaries |
-| Responsibility splitting | 3/5 | Explained that `park()` controls the entry workflow while `_find_available_spot()` owns spot selection; still needs practice making these splits independently |
-| Design and interfaces | Not assessed | No attempt yet |
-| Python implementation | 2/5 | Extended the solution with guided changes and independently recognized that exit requires a ticket contract, entry time, enum, and stored tickets; still needs help converting the design into correct Python |
-| Testing | 2/5 | Added tests for earlier behaviors and used a failure to expose spot-order dependence; ticket-time and ticket-storage tests were added by Codex; 8 tests pass |
-| Extensibility and refactoring | Not assessed | No attempt yet |
-| Design explanation and defense | 2/5 | Can explain the current parking workflow and why floors/spots are separate, but still needs prompts to identify the next bottleneck |
+## Reference workflow
 
-## Completed Problems
+- Before each problem, read its repository requirements; before judging an
+  attempted solution, inspect the relevant actual implementation, preferring Python.
+- The learner still derives and writes the solution. Reveal full reference
+  designs/code only when explicitly requested. Guidance switches from interviewer
+  mode when the learner says "mentor help me".
+- Use the reference for behavior, design comparison, complexity, and concurrency;
+  equivalent correct designs need not copy its class names or list orientation.
+- Flag contradictory requirements, implementation bugs, or gaps explicitly.
+  Record the agreed contract rather than silently copying a contradiction.
+- Original-only topics have no verified answer in this repository; label their
+  briefs and review reasoning as mentor-authored.
+- Concurrency exercises are linked from the README to external pages. Inclusion
+  does not imply a free solution exists in this repository. If unavailable, state
+  that limitation and distinguish any mentor-authored guidance.
+- Save the exact reference URL and accessed version/commit when available in each
+  problem's progress file when that problem begins.
 
-None.
+## Consolidated sequence
 
-## Attempted Problems
+| # | Problem | Source | Status |
+| --- | --- | --- | --- |
+| 1 | LRU Cache | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/lru-cache.md) + original curriculum | Completed with guidance; 4 tests pass; demo runs |
+| 2 | LFU Cache | Original curriculum | Not started |
+| 3 | Parking Lot | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/parking-lot.md) + original curriculum | Not started |
+| 4 | Elevator System | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/elevator-system.md) + original curriculum | Not started |
+| 5 | Job Scheduler | Original curriculum | Not started |
+| 6 | Notification System | Original curriculum | Not started |
+| 7 | Rate Limiter | Original curriculum | Not started |
+| 8 | Meeting Room Scheduler | Original curriculum | Not started |
+| 9 | Vending Machine | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/vending-machine.md) + original curriculum | Not started |
+| 10 | Splitwise | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/splitwise.md) + original curriculum | Not started |
+| 11 | Stack Overflow | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/stack-overflow.md) | Not started |
+| 12 | Logging Framework | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/logging-framework.md) | Not started |
+| 13 | Traffic Signal Control System | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/traffic-signal.md) | Not started |
+| 14 | Coffee Vending Machine | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/coffee-vending-machine.md) | Not started |
+| 15 | Task Management System | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/task-management-system.md) | Not started |
+| 16 | ATM | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/atm.md) | Not started |
+| 17 | LinkedIn | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/linkedin.md) | Not started |
+| 18 | Tic Tac Toe | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/tic-tac-toe.md) | Not started |
+| 19 | Pub Sub System | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/pub-sub-system.md) | Not started |
+| 20 | Car Rental System | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/car-rental-system.md) | Not started |
+| 21 | Online Auction System | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/online-auction-system.md) | Not started |
+| 22 | Hotel Management System | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/hotel-management-system.md) | Not started |
+| 23 | Digital Wallet Service | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/digital-wallet-service.md) | Not started |
+| 24 | Airline Management System | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/airline-management-system.md) | Not started |
+| 25 | Library Management System | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/library-management-system.md) | Not started |
+| 26 | Social Network (Facebook) | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/social-networking-service.md) | Not started |
+| 27 | Restaurant Management System | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/restaurant-management-system.md) | Not started |
+| 28 | Concert Ticket Booking System | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/concert-ticket-booking-system.md) | Not started |
+| 29 | CricInfo | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/cricinfo.md) | Not started |
+| 30 | Chess | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/chess-game.md) | Not started |
+| 31 | Snake and Ladder | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/snake-and-ladder.md) | Not started |
+| 32 | Ride-Sharing Service (Uber) | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/ride-sharing-service.md) | Not started |
+| 33 | Course Registration System | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/course-registration-system.md) | Not started |
+| 34 | Movie Ticket Booking System | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/movie-ticket-booking-system.md) | Not started |
+| 35 | Online Shopping System (Amazon) | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/online-shopping-service.md) | Not started |
+| 36 | Online Stock Brokerage System | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/online-stock-brokerage-system.md) | Not started |
+| 37 | Music Streaming Service (Spotify) | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/music-streaming-service.md) | Not started |
+| 38 | Food Delivery Service (Swiggy) | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/food-delivery-service.md) | Not started |
+| 39 | Voting System | [Repository solution](https://github.com/ashishps1/awesome-low-level-design/tree/main/solutions/python/votingsystem) | Not started |
+| 40 | File and Directory System | [Repository solution](https://github.com/ashishps1/awesome-low-level-design/tree/main/solutions/java/src/filedirectory) | Not started |
+| 41 | Online Learning Platform | [Repository solution](https://github.com/ashishps1/awesome-low-level-design/tree/main/solutions/java/src/onlinelearningplatform) | Not started |
+| 42 | Print FooBar Alternately | [README concurrency exercise](https://github.com/ashishps1/awesome-low-level-design#-concurrency-and-multi-threading-problems) | Not started |
+| 43 | Print Zero Even Odd | [README concurrency exercise](https://github.com/ashishps1/awesome-low-level-design#-concurrency-and-multi-threading-problems) | Not started |
+| 44 | Fizz Buzz Multithreaded | [README concurrency exercise](https://github.com/ashishps1/awesome-low-level-design#-concurrency-and-multi-threading-problems) | Not started |
+| 45 | Building H2O Molecule | [README concurrency exercise](https://github.com/ashishps1/awesome-low-level-design#-concurrency-and-multi-threading-problems) | Not started |
+| 46 | Thread-Safe Cache with TTL | [README concurrency exercise](https://github.com/ashishps1/awesome-low-level-design#-concurrency-and-multi-threading-problems) | Not started |
+| 47 | Concurrent HashMap | [README concurrency exercise](https://github.com/ashishps1/awesome-low-level-design#-concurrency-and-multi-threading-problems) | Not started |
+| 48 | Thread-Safe Blocking Queue | [README concurrency exercise](https://github.com/ashishps1/awesome-low-level-design#-concurrency-and-multi-threading-problems) | Not started |
+| 49 | Concurrent Bloom Filter | [README concurrency exercise](https://github.com/ashishps1/awesome-low-level-design#-concurrency-and-multi-threading-problems) | Not started |
+| 50 | Multithreaded Merge Sort | [README concurrency exercise](https://github.com/ashishps1/awesome-low-level-design#-concurrency-and-multi-threading-problems) | Not started |
+| 51 | Full random machine-coding mock | Original curriculum | Not started |
 
-### Problem 02: Job Scheduler — in progress
+## Current readiness
 
-- Current stage: automatic one-time success and failure paths implemented;
-  learner explanation and retry behavior next
-- Scope: one-time and fixed-interval jobs, cancellation, pause/resume, status,
-  retries, concurrent workers, and in-memory single-process execution
-- Design: no architecture or patterns selected yet
-- Implementation: registration, ID lookup, min-heap ordering, condition-based
-  background dispatch, executor delegation, success state, and shutdown are
-  implemented with injected clock/executor boundaries
-- Tests: 9 passing tests cover registration, API failures, ordering, due/future
-  behavior, empty-queue wakeup, newly earlier job wakeup, and failure recording
-- Open modeling decision: separate the reusable job definition from each
-  scheduled occurrence if their identities and lifecycles require it
-- Hint used: Level 1 framework for compact requirement notes and interview
-  sequencing
+LRU completed with substantial pair-coding help. Independent implementation under
+interview conditions is not yet demonstrated. Next scheduled problem: LFU Cache.
 
-### Problem 01: Parking Lot — in progress
+## Cross-problem observations
 
-- Current stage: parking-entry behavior and active-ticket storage complete; exit
-  flow has been sketched but is not implemented
-- Requirements/clarification: 3/5 (provisional)
-- Responsibility splitting: 3/5 (provisional)
-- Implementation: the minimal `park()` flow supports multiple floors, compatible
-  spot types, duplicate-entry rejection, occupancy updates, ticket creation, and
-  deterministic lowest-floor/lowest-spot-ID selection. It now returns an
-  `EntryTicket` containing an enum category and entry time, and stores that
-  ticket by ID for later exit lookup
-- Tests: 8 pytest tests pass
-- SOLID: SRP has been introduced through the `park()` and
-  `_find_available_spot()` responsibility split, but it has not yet earned
-  completed coverage through a pressure-driven refactor
-- Patterns: none encountered yet
-- Next behavior: implement the simplest successful exit flow for a valid active
-  ticket and make its parking spot available again
-
-## Reusable Interview Framework
-
-Planned after completing the Parking Lot iterations. It will capture the method
-we actually practiced: clarify the behavior, trace one happy flow, write a
-failing test, implement the smallest change, find the next real bottleneck,
-split responsibilities when the code demands it, and explain trade-offs. The
-framework should be usable as a timed checklist during later mock interviews.
-
-## Pattern Coverage
-
-No patterns have been encountered yet.
-
-### Creational
-
-- [ ] Factory Method
-- [ ] Abstract Factory
-- [ ] Builder
-- [ ] Prototype
-- [ ] Singleton
-
-### Structural
-
-- [ ] Adapter
-- [ ] Bridge
-- [ ] Composite
-- [ ] Decorator
-- [ ] Facade
-- [ ] Flyweight
-- [ ] Proxy
-
-### Behavioral
-
-- [ ] Strategy
-- [ ] Observer
-- [ ] Command
-- [ ] State
-- [ ] Chain of Responsibility
-- [ ] Template Method
-- [ ] Iterator
-- [ ] Mediator
-- [ ] Memento
-- [ ] Visitor
-- [ ] Interpreter
-
-### Practical Engineering
-
-- [ ] Dependency Injection
-- [ ] Repository
-- [ ] Service Layer
-- [ ] Specification
-- [ ] Null Object
-- [ ] Unit of Work
-- [ ] State Machine
-- [ ] Retry
-- [ ] Circuit Breaker
-- [ ] Event-driven design
-
-Checking an item means the pattern arose in implementation or refactoring and
-its benefit and trade-offs were discussed. Merely mentioning it does not count.
-
-## SOLID Coverage
-
-- [ ] Single Responsibility Principle (SRP)
-- [ ] Open/Closed Principle (OCP)
-- [ ] Liskov Substitution Principle (LSP)
-- [ ] Interface Segregation Principle (ISP)
-- [ ] Dependency Inversion Principle (DIP)
-
-Checking an item requires an encountered design smell, a learner-led refactor,
-and tests of the result.
-
-SRP has been discussed using the current workflow/helper split. It remains
-unchecked until a real code bottleneck leads to a tested refactor.
-
-## Repeated Mistakes
-
-None observed.
-
-## Current Weaknesses
-
-Not assessed.
-
-## Hints Used
-
-- Problem 01, Level 1: reusable clarification-question framework; first prompt
-  focused on supported vehicle and parking-spot types.
-- Problem 01, Level 1: operation-tracing framework for beginning domain modeling.
-- Problem 01, Level 2: behavior-first happy-path modeling after the learner
-  correctly challenged mechanical noun/verb extraction.
-- Problem 01, Level 3: responsibility assignment explained through the
-  information-owner rule and parking allocation example.
-
-## Session History
-
-### 2026-09-14 — Job Scheduler requirements
-
-- Started a mock LLD interview for an unfamiliar job-scheduler problem.
-- Clarified functional requirements, timing semantics, concurrency, retry
-  behavior, and the first-version scope.
-- Practiced compact requirement notes using use cases, rules, constraints, out
-  of scope, open questions, and a deferred failure list.
-- Narrated the successful submission-to-execution flow and corrected ownership
-  of retry orchestration and client-notification scope.
-- Created a code-free scaffold for Problem 02. Responsibility modeling is next.
-
-### 2026-09-15 — Job Scheduler registration test
-
-- Added the first pytest for the one-time registration happy path.
-- Verified generated-ID lookup, scheduled metadata, and that registration does
-  not execute client work; result: 1 passed.
-- Time-ordered insertion is the next behavior.
-
-### 2026-09-15 — Job Scheduler due execution slice
-
-- Added clock and executor boundaries so timing and worker delegation can be
-  tested without sleeping or real threads.
-- Implemented due-time comparison, heap removal, delegation, execution, and
-  successful status update for one job.
-- Added due-job and future-job tests; full result: 4 passed.
-- Background timed waiting, real thread-pool lifecycle, synchronization,
-  failures, retries, and recurrence remain pending.
-
-### 2026-09-15 — Job Scheduler automatic dispatcher
-
-- Added one background dispatcher thread and condition-variable synchronization
-  for empty and timed waits.
-- `schedule` now wakes the dispatcher after an atomic dictionary/heap update;
-  newly earlier due work is reconsidered immediately.
-- Added explicit `start` and `shutdown` lifecycle and executor shutdown.
-- Added two deterministic background-dispatch tests; full result: 6 passed.
-
-### 2026-09-15 — Job Scheduler failure state
-
-- Added an execution boundary that catches ordinary client-job exceptions,
-  records the original exception, and transitions the scheduled job from
-  `WORKING` to `FAILED` without adding retry behavior prematurely.
-- Added a focused failure test; full result: 7 passed.
-- Codex implemented this slice at the learner's explicit request. The learner's
-  next task is to explain the `try`/`except`/`else` transition before retry is
-  introduced.
-- Added `JobNotFoundError` and `SchedulerShutdownError` under a common scheduler
-  exception base, with tests for unknown lookup and post-shutdown scheduling;
-  full result: 9 passed.
-
-### 2026-09-09 — Parking-entry flow
-
-- Implemented the minimal successful `park()` flow with compatible-spot search,
-  occupancy update, and ticket creation.
-- Added failure handling for no compatible spot and duplicate active vehicle
-  registration.
-- Changed configuration to contain floors and their spots, then returned both
-  the selected spot and its floor from the search helper.
-- Made selection independent of caller-provided order by sorting floors and
-  spots once during initialization.
-- The learner recognized that exit requires a clearer ticket contract, vehicle
-  enum, recorded entry time, and a way to retrieve active tickets by ID.
-- Corrected the new contract's mechanical Python issues: dictionary storage,
-  tuple-producing comma, missing entry time, enum consistency, and typed ticket
-  construction.
-- Added tests for successful parking, no compatible spot, duplicate entry,
-  floor-based configuration, lowest-floor selection, and lowest-spot-ID
-  selection, plus entry-time recording and active-ticket lookup; result: 8
-  passed.
-- The learner implemented several guided changes and tests. Codex wrote the
-  initial happy flow and the final spot-sorting change.
-
-### 2026-09-08 — Repository setup
-
-- Initialized the interview-preparation structure and mentoring guidance.
-- Preserved the pre-existing `OOPS/recap.py` file.
-- Did not start or score a problem.
-
-## Next Recommended Problem
-
-Continue Problem 01 with the smallest successful exit behavior: give the system
-a valid active ticket, close it, and make its occupied spot available again.
-Add invalid-ticket, already-closed-ticket, time/fee, and concurrency behavior one
-at a time after the happy exit path works.
+The curriculum was expanded at the learner's request on 2026-10-30. Full
+reference solutions remain withheld until requested.

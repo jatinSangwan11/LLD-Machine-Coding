@@ -1,59 +1,37 @@
-# LLD And Machine-Coding Interview Preparation
+# Python LLD and Machine-Coding Practice
 
-This repository is a hands-on workspace for Big Tech and YC-style
-machine-coding interviews, backend SWE interviews, and practical object-oriented
-design interviews. Python is the primary implementation language.
+This repository is a learner-owned workspace for SWE-1/2 LLD and 60–90 minute
+machine-coding interview preparation.
 
-The emphasis is on doing the engineering: clarify ambiguous requirements, model
-the domain, assign responsibilities, design useful interfaces, implement clean
-Python, test behavior, respond to requirement changes, refactor, and defend the
-trade-offs. Patterns and SOLID principles are introduced only when a real
-problem creates a reason to use them.
+## Working agreement
 
-## How Sessions Work
+The learner designs, implements, tests, and defends every solution. The mentor
+guides progressively, reviews like an interviewer, and does not reveal complete
+designs or silently implement solutions.
 
-The mentor starts in interviewer mode. A typical problem moves through:
+Read:
 
-1. Requirements and clarification
-2. Domain modeling, responsibilities, and interfaces
-3. Initial design and Python implementation
-4. Pytest coverage
-5. A realistic requirement change
-6. Refactoring, design review, and interview review
+- `MENTORING_PLAN.md` — teaching style, sequence, timing, and evaluation plan
+- `agent.md` — mandatory operating rules for the mentor
+- `current_context.md` — exact active-problem checkpoint
+- `progress.md` — curriculum-level progress
+- `problems/<problem>/progress.md` — detailed progress for each solution
 
-Hints are progressive. The first hint is a guiding question; later hints become
-more explicit. A complete solution is provided only when requested.
+## Current problem
 
-## Repository Guide
+LRU Cache completed in guided pair-coding mode, with a runnable demo and four
+passing tests. Next scheduled problem: LFU Cache (not started).
 
-- `agent.md` — permanent mentoring, interviewing, review, and teaching rules
-- `current_context.md` — precise state of the active problem and session handoff
-- `progress.md` — long-term attempts, scores, patterns, principles, weaknesses,
-  hints, and recommendations
-- `problems/` — problem statements, implementations, and tests as exercises begin
-- `patterns/` — concise notes or reusable examples that emerge from completed
-  engineering work; not a theory-first curriculum
-- `OOPS/recap.py` — pre-existing file retained during repository setup
+## Curriculum reference
 
-## Technical Baseline
+[ashishps1/awesome-low-level-design](https://github.com/ashishps1/awesome-low-level-design)
+is the source of truth for covered requirements and reference solution reviews.
+The merged curriculum has 50 unique exercises and one final mock.
+See `progress.md` for the complete sequence, source links, and reference policy.
 
-- Python 3.12+
-- modern type hints
-- dataclasses, protocols, ABCs, and enums only when justified
-- composition and dependency injection where they improve the design
-- explicit exceptions and clean module boundaries
-- pytest for every meaningful implementation
+## Technical baseline
 
-## State Management
-
-Before a session, read `agent.md`, `current_context.md`, and `progress.md`. After
-a meaningful session, update the current context. After a completed problem or
-major session, update long-term progress using observable evidence rather than
-generic ratings.
-
-## Start
-
-Ask the mentor: **Start my first problem.**
-
-The mentor will provide the opening scenario and wait for your clarification
-questions. No problem has been created during repository initialization.
+- Python
+- pytest when implementation begins
+- simple designs before abstractions
+- SOLID principles and patterns only when justified by actual design pressure

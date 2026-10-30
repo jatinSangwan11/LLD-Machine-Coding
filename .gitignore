@@ -1,0 +1,28 @@
+# Local Python environments
+venv/
+.venv/
+env/
+
+# Python bytecode and tool caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Coverage output
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# Build and packaging output
+build/
+dist/
+*.egg-info/
+
+# Local secrets and operating-system files
+.env
+.env.*
+!.env.example
+.DS_Store
