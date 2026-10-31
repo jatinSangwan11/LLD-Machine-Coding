@@ -1,6 +1,6 @@
 # Machine-Coding Curriculum Progress
 
-Last updated: 2026-10-30
+Last updated: 2026-10-31
 
 ## Source of truth and scope
 
@@ -43,7 +43,7 @@ Notification System; Course Registration is distinct from Online Learning.
 | # | Problem | Source | Status |
 | --- | --- | --- | --- |
 | 1 | LRU Cache | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/lru-cache.md) + original curriculum | Completed with guidance; 4 tests pass; demo runs |
-| 2 | LFU Cache | Original curriculum | Not started |
+| 2 | LFU Cache | Original curriculum | Started 2026-10-31; requirement clarification |
 | 3 | Parking Lot | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/parking-lot.md) + original curriculum | Not started |
 | 4 | Elevator System | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/elevator-system.md) + original curriculum | Not started |
 | 5 | Job Scheduler | Original curriculum | Not started |

@@ -1,17 +1,57 @@
 # Current Engineering Context
 
-Last updated: 2026-10-30
+Last updated: 2026-10-31
 
 ## Active problem
 
-- Problem: LRU Cache
+- Problem: LFU Cache
 - Mode: Stage 1 — Guided
-- Stage: Completed with guidance; next scheduled problem LFU (not started)
-- Implementation: Node, DLL, thread-safe LRUCache, and runnable demo complete
-- Tests: 4 passing pytest cases (3 sequential, 1 concurrency stress test)
-- Design decisions: dictionary maps keys to doubly linked list nodes; head is MRU,
-  tail is LRU (learner changed convention); empty head and tail are None
-- Hints used: introduced direct node references and doubly linked list operations
+- Stage: Thread safety and seven pytest cases added at explicit learner request
+- Implementation/tests: All six manual removal/reinsertion cases for sizes 1–3
+  pass, including singleton, endpoints, reciprocal links, and detached links.
+  New nodes start at frequency 1; unused DLL capacity removed. LFUCache constructor
+  initializes maps/minimum correctly for capacities 0, 1, 3; -1 raises ValueError.
+  Separate cache instances own separate dictionaries.
+- Source: Original curriculum; mentor-authored brief
+- Brief: Fixed-capacity in-memory integer key/value cache, get/put, LFU eviction,
+  average O(1) operations and O(capacity) space. See LFU progress for agreed contract.
+- Design: key-to-node map, frequency-to-DLL map, lowest_frequency variable;
+  tail LRU -> next -> head MRU; each DLL owns pointer changes only.
+- Next: Fix promotion destination registration/minimum tracking first, then
+  restructure put (zero capacity, update return, eviction cleanup, common insertion).
+
+Latest concurrency checkpoint: at explicit learner request, one per-instance Lock
+now protects each complete get/put, including value return and promotion.
+Promotion helper requires caller-held lock; internal maps/DLL are not independently
+synchronized and external mutation is outside the contract. Added seven focused
+pytest cases (five sequential, two concurrent); LFU pytest file: 7 passed.
+Concurrent checks cover exact hot-key frequency increments plus shared-key
+get/put/eviction invariants. Stress tests do not prove all interleavings.
+Next: learner reviews lock scope and tests, then design/complexity defense.
+
+Previous checkpoint: learner explicitly requested
+all corrections and explanatory comments. Mentor fixed promotion/map types,
+conditional minimum updates, zero-capacity handling, update return, victim
+lookup deletion, group cleanup, and common frequency-1 insertion. Preserved
+tail/LRU -> next -> head/MRU convention. Verified 20,000 seeded operations
+against an independent frequency/recency model over capacities 0, 1, 2, 5,
+checking list/map invariants after every operation; negative capacity rejected.
+No permanent tests added. Single-threaded contract; no concurrency claim.
+Next: learner reviews explanation and writes focused tests; independent
+implementation readiness has not been demonstrated.
+
+Latest manual review: first insertion and existing-key update raise
+UnboundLocalError for dll. Promotion stores a Node in frequency_map and changes
+minimum unconditionally; second get raises AttributeError on Node.remove.
+Zero-capacity get returns None; put stores an entry. Eviction retains victim
+lookup and stores a DLL instead of Node. Seeded fixtures isolate operations.
+Solution code unchanged; no permanent tests added.
+- Hints used: frequency grouping prompt; explained constant-time minimum update;
+  corrected tail-removal boundary logic. Independent readiness not assessed.
+
+LFU began at learner request on 2026-10-31. Track details in
+problems/02_lfu_cache/progress.md. LRU remains completed with guidance;
+the LRU notes below are historical and do not describe active LFU work.
 
 ## Latest pair-coding checkpoint
 
