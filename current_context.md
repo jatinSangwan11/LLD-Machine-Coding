@@ -1,24 +1,40 @@
 # Current Engineering Context
 
-Last updated: 2026-10-31
+Last updated: 2026-11-02
 
 ## Active problem
 
-- Problem: LFU Cache
-- Mode: Stage 1 — Guided
-- Stage: Thread safety and seven pytest cases added at explicit learner request
-- Implementation/tests: All six manual removal/reinsertion cases for sizes 1–3
-  pass, including singleton, endpoints, reciprocal links, and detached links.
-  New nodes start at frequency 1; unused DLL capacity removed. LFUCache constructor
-  initializes maps/minimum correctly for capacities 0, 1, 3; -1 raises ValueError.
-  Separate cache instances own separate dictionaries.
-- Source: Original curriculum; mentor-authored brief
-- Brief: Fixed-capacity in-memory integer key/value cache, get/put, LFU eviction,
-  average O(1) operations and O(capacity) space. See LFU progress for agreed contract.
-- Design: key-to-node map, frequency-to-DLL map, lowest_frequency variable;
-  tail LRU -> next -> head MRU; each DLL owns pointer changes only.
-- Next: Fix promotion destination registration/minimum tracking first, then
-  restructure put (zero capacity, update return, eviction cleanup, common insertion).
+- Problem: Stock Exchange — Order Matching
+- Stage: Completed with guidance on 2026-11-02 at learner request
+- Mode: Started as 90-minute mock; completed as assisted, reduced-scope practice
+- Implementation: Single-stock sequential engine, direct Order submission,
+  price-time heap ordering, partial fills and returned Trade records
+- Tests: Four focused pytest cases passed
+- Assistance: Mentor implemented matching and tests at explicit request;
+  independent readiness not demonstrated
+- Scope: File/CLI and multi-stock support removed by learner; original full
+  interview prompt not fully implemented. Valid-input/ownership assumptions remain.
+- Next: Parking Lot (#4), not started; read reference requirements before briefing.
+- Timer: Closed at learner request at 17:36:41 IST; no active round/reminder.
+- Detailed assessment: problems/03_stock_exchange/progress.md
+
+All notes below are session history. Prior active timers, deadlines, pending
+Stock Exchange next actions, and earlier exercise checkpoints are superseded.
+
+Stock Exchange session override: learner confirmed this is their actual
+90-minute machine-coding interview challenge. Run it as Stage 4 timed mock,
+not guided pair coding. Timer started on learner's start signal on 2026-11-02;
+requirements clarification is within the 90 minutes. Learner drives all work;
+no unsolicited hints, solution code, or fixes. Record requested assistance and
+assess the state at the deadline separately from any later fixes. See Stock
+Exchange progress for time budget and assessment. Added defaults remain open
+clarification points rather than source requirements.
+
+Completion checkpoint: learner wrapped up LFU on 2026-10-31. Seven pytest cases
+passed, including two concurrency cases. Mentor supplied several operation fixes,
+locking, and tests at explicit request; independent readiness is not demonstrated.
+See LFU progress for end-of-problem assessment. Notes below are session history;
+earlier pending-fix and next-action statements are superseded.
 
 Latest concurrency checkpoint: at explicit learner request, one per-instance Lock
 now protects each complete get/put, including value return and promotion.
@@ -235,3 +251,32 @@ and avoid further pointer-by-pointer questioning.
   FAANG, Stripe, or Atlassian provenance. Allow clarification one question at a time.
 - Record progress in `problems/01_lru_cache/progress.md` after each meaningful
   LRU session.
+
+Latest Stock Exchange steering: learner removed file/CLI input and proposed
+OrderMatchingEngine accepting Order objects directly. Core matching rules remain;
+trade output interface not yet chosen. Track this as changed scope from original
+interview. Learner still choosing state/data structures. Conceptual guidance has
+been supplied; do not assess this as an unassisted round. Deadline remains the
+recorded one unless learner changes timing.
+
+Latest next action: use problems/03_stock_exchange/current_attempt.md for the
+consolidated current scope (one stock, direct orders, sequential arrival FIFO).
+Learner requested requirements, then happy-flow tracing before data structures.
+Per-submit returned trade records are proposed, still to confirm. Original
+file-based interview brief remains in problem.md for reference.
+
+Latest Stock Exchange coding checkpoint: learner explicitly requested help
+implementing. Mentor added submit_order and Trade records in
+problems/03_stock_exchange/order_matching_machine.py with explanatory comments.
+Manual assertions pass original sample, both-side price/FIFO priority, partial
+fills, noncrossing/equal prices, sell-price execution and remainders. No permanent
+tests yet. Engine assumes valid unique-ID orders for one stock and sequential
+calls; pending Order objects must not be externally mutated or resubmitted.
+Next: learner traces code and writes tests. Attempt is assisted; revised deadline
+remains 2026-11-02 17:44:04 IST.
+
+Latest test checkpoint: at learner request added min-quantity takeaway comments
+under order_matching_machine.py and separate test_order_matching_machine.py.
+Four focused tests pass: original sample/remainders, ask price/FIFO/partial-fill
+priority, bid price/FIFO/seller price, and noncrossing/equality/incoming remainder.
+Both implementation and tests include explicit mentor coding assistance.

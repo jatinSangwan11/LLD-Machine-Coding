@@ -15,17 +15,18 @@ machine-coding rounds.
 
 1. LRU Cache
 2. LFU Cache
-3. Parking Lot
-4. Elevator
-5. Job Scheduler
-6. Notification System
-7. Rate Limiter
-8. Meeting Room Scheduler
-9. Vending Machine
-10. Splitwise
-11–41. Remaining repository LLD problems, including solution-only topics
-42–50. Repository-linked concurrency exercises
-51. Full random machine-coding mock
+3. Stock Exchange — Order Matching (user-added; planned 2026-11-01)
+4. Parking Lot
+5. Elevator
+6. Job Scheduler
+7. Notification System
+8. Rate Limiter
+9. Meeting Room Scheduler
+10. Vending Machine
+11. Splitwise
+12–42. Remaining repository LLD problems, including solution-only topics
+43–51. Repository-linked concurrency exercises
+52. Full random machine-coding mock
 
 The exact consolidated order and source links are maintained in `progress.md`.
 On 2026-10-30 the learner expanded the scope to every problem in

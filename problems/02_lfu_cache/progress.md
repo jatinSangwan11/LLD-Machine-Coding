@@ -5,7 +5,7 @@ Last updated: 2026-10-31
 ## Status
 
 - Mode: Stage 1 — Guided; interviewer mode
-- Stage: Thread-safe operations and seven tests verified; learner review next
+- Stage: Completed with guidance on 2026-10-31 at learner request
 - Source: Original curriculum; mentor-authored brief, no upstream LFU reference claimed
 - Implementation/tests: Node/DLL, constructor, promotion/get/put corrected;
   seven permanent pytest cases pass (five sequential, two concurrent)
@@ -53,6 +53,30 @@ moving from frequency 4 to 5. Full-cache insertion outline was sound except
 tail-removal boundary logic; mentor corrected it. No implementation reviewed.
 
 ## Next action
+
+Session closed at learner request. Next curriculum problem: Stock Exchange (planned 2026-11-01), then
+Parking Lot; learner explicitly changed the order. Earlier pending-fix and next-action statements below are historical.
+Independent LFU reimplementation is a future retention exercise.
+
+## End-of-problem review
+
+- Strengths: learner identified the sorted-list repositioning bottleneck,
+  proposed frequency groups with internal LRU order and key-to-node lookup,
+  and proposed minimum-frequency state. Derived basic eviction flow.
+- Revision: dictionary value contracts, registering destination groups,
+  conditional minimum updates, insertion/update control flow, eviction cleanup,
+  singleton pointer handling, and atomic lock scope.
+- Mentor contribution: frequency grouping prompt, minimum-update reasoning,
+  several implementation corrections, synchronization, and permanent tests.
+- Validation: seven pytest cases passed (five sequential, two concurrent);
+  earlier 20,000 seeded model-comparison operations passed before locking.
+  Stress testing is not exhaustive concurrency proof.
+- Complexity: average O(1) cache work per operation and O(capacity) storage
+  under the standard model; lock contention adds waiting time.
+- Independence: not demonstrated; complete an independent implementation later.
+- Optional interviewer follow-ups: add TTL expiration; support capacity resizing.
+
+## Session history
 
 Latest authorized addition: learner requested locking before tests. Added one
 per-cache threading.Lock around each complete get and put; promotion runs under

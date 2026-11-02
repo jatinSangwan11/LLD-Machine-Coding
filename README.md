@@ -19,14 +19,15 @@ Read:
 
 ## Current problem
 
-LRU Cache completed in guided pair-coding mode, with a runnable demo and four
-passing tests. Next scheduled problem: LFU Cache (not started).
+LRU, LFU, and Stock Exchange completed with guidance. Stock Exchange covers a
+single-stock in-memory engine with four passing tests; original file/CLI and
+multi-stock scope was removed by the learner. Next problem: Parking Lot (#4).
 
 ## Curriculum reference
 
 [ashishps1/awesome-low-level-design](https://github.com/ashishps1/awesome-low-level-design)
 is the source of truth for covered requirements and reference solution reviews.
-The merged curriculum has 50 unique exercises and one final mock.
+The merged curriculum has 51 unique exercises and one final mock.
 See `progress.md` for the complete sequence, source links, and reference policy.
 
 ## Technical baseline
