@@ -1,22 +1,26 @@
 # Current Engineering Context
 
-Last updated: 2026-11-02
+Last updated: 2026-11-03
 
 ## Active problem
 
-- Problem: Stock Exchange — Order Matching
-- Stage: Completed with guidance on 2026-11-02 at learner request
-- Mode: Started as 90-minute mock; completed as assisted, reduced-scope practice
-- Implementation: Single-stock sequential engine, direct Order submission,
-  price-time heap ordering, partial fills and returned Trade records
-- Tests: Four focused pytest cases passed
-- Assistance: Mentor implemented matching and tests at explicit request;
-  independent readiness not demonstrated
-- Scope: File/CLI and multi-stock support removed by learner; original full
-  interview prompt not fully implemented. Valid-input/ownership assumptions remain.
-- Next: Parking Lot (#4), not started; read reference requirements before briefing.
-- Timer: Closed at learner request at 17:36:41 IST; no active round/reminder.
-- Detailed assessment: problems/03_stock_exchange/progress.md
+- Problem: Parking Lot (#4)
+- Stage: Contract and initial design discussed; ready for learner implementation
+- Mode: Interviewer presentation; no timer started
+- Source: ashishps1/awesome-low-level-design/problems/parking-lot.md, accessed
+  2026-11-03 on main; exact commit unavailable. Requirements inspected.
+- Scope: Multiple levels, car/motorcycle/truck compatibility, entry allocation,
+  exit release, availability, concurrent operations across entry/exit points.
+- Design: Spot/floor/ticket records, ParkingLot orchestration, numeric level/spot
+  ordering, ticket and vehicle maps, per-type free-spot heaps, direct spot lookup.
+- Implementation/tests: Not started; no solution scaffolding created
+- Hints used: Identity/lifecycle corrections, duplicate request examples,
+  free-spot index prompt; learner proposed heaps and vehicle tracking.
+- Next: Learner implements enums and data classes, then ParkingLot constructor;
+  review small checkpoints before entry/exit/availability. See progress for contract.
+- Detailed checkpoint: problems/04_parking_lot/progress.md
+- Previous: LRU, LFU, Stock Exchange completed with guidance; independence not
+  demonstrated. Favor small hints and learner attempts before code assistance.
 
 All notes below are session history. Prior active timers, deadlines, pending
 Stock Exchange next actions, and earlier exercise checkpoints are superseded.
@@ -280,3 +284,33 @@ under order_matching_machine.py and separate test_order_matching_machine.py.
 Four focused tests pass: original sample/remainders, ask price/FIFO/partial-fill
 priority, bid price/FIFO/seller price, and noncrossing/equality/incoming remainder.
 Both implementation and tests include explicit mentor coding assistance.
+
+Latest Parking Lot checkpoint: learner explicitly requested code correction.
+Mentor fixed data model and constructor in problems/04_parking_lot/parking_lot.py,
+implemented direct spot lookup and per-type free heaps; manual setup checks pass.
+Entry/exit/availability remain unimplemented and no synchronization added yet.
+Next: learner reviews initialization, then implements entry incrementally.
+Off-record question: sorting a copy of config by level and each spot list by ID;
+sorting config is independent of heap-maintained allocation priority.
+
+Latest Parking Lot implementation: at explicit learner request mentor added
+enter/exit with one per-lot Lock. Per-type heaps, spots, tickets and active-vehicle
+map updated under it; duplicate/full/unknown/closed cases fail explicitly.
+Monotonic ticket IDs, timezone-aware UTC issue times, closed tickets retained.
+Manual sequential and concurrent checks passed, including duplicate registration
+race. availability remains unimplemented; next learner task is consistent
+per-level/type counts under the same lock. No permanent Parking Lot tests yet.
+
+Latest Parking Lot checkpoint: availability implemented at learner request, with
+optional type filter and lock-protected fresh per-level/type count dictionaries;
+zero counts included. Restored enter's missing vehicle-type validation and fixed
+minor formatting. Sequential snapshot/filter/isolation/empty cases and concurrent
+entry/exit/read checks passed. No permanent tests yet. Next: learner reviews
+code, then focused test cases and complexity/invariant defense.
+
+Latest Parking Lot test checkpoint: learner requested permanent tests. Added
+problems/04_parking_lot/test_parking_lot.py; 9 pytest cases passed (including
+three concurrency cases). Covers allocation, compatibility, lifecycle, explicit
+failures, availability and config boundaries, contention and final invariants.
+Implementation unchanged; git diff --check passed. Next: review complexity and
+lock scope, then completion assessment when learner requests wrap-up.

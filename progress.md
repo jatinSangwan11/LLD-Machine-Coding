@@ -1,6 +1,6 @@
 # Machine-Coding Curriculum Progress
 
-Last updated: 2026-11-02
+Last updated: 2026-11-03
 
 ## Source of truth and scope
 
@@ -47,7 +47,7 @@ Notification System; Course Registration is distinct from Online Learning.
 | 1 | LRU Cache | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/lru-cache.md) + original curriculum | Completed with guidance; 4 tests pass; demo runs |
 | 2 | LFU Cache | Original curriculum | Completed with guidance; 7 tests pass; thread-safe get/put |
 | 3 | Stock Exchange — Order Matching | [Learner's actual interview challenge](problems/03_stock_exchange/problem.md) | Completed with guidance; reduced scope; 4 tests pass |
-| 4 | Parking Lot | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/parking-lot.md) + original curriculum | Not started |
+| 4 | Parking Lot | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/parking-lot.md) + original curriculum | Started 2026-11-03; requirement clarification |
 | 5 | Elevator System | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/elevator-system.md) + original curriculum | Not started |
 | 6 | Job Scheduler | Original curriculum | Not started |
 | 7 | Notification System | Original curriculum | Not started |
@@ -101,7 +101,7 @@ Notification System; Course Registration is distinct from Online Learning.
 
 LRU, LFU, and Stock Exchange completed with substantial guidance. Stock Exchange
 used reduced scope and mentor-written matching/tests; independent interview
-readiness is not demonstrated. Next problem: Parking Lot (#4).
+readiness is not demonstrated. Active problem: Parking Lot (#4), requirement clarification.
 
 ## Cross-problem observations
 

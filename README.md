@@ -21,7 +21,7 @@ Read:
 
 LRU, LFU, and Stock Exchange completed with guidance. Stock Exchange covers a
 single-stock in-memory engine with four passing tests; original file/CLI and
-multi-stock scope was removed by the learner. Next problem: Parking Lot (#4).
+multi-stock scope was removed by the learner. Current problem: Parking Lot (#4), requirement clarification.
 
 ## Curriculum reference
 

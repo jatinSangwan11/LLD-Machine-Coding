@@ -22,7 +22,7 @@ Last updated: 2026-11-02
 ## Next action
 
 Session closed at learner request. Next curriculum problem: Parking Lot (#4),
-not started. An independent reimplementation is a future retention exercise.
+planned 2026-11-03 at learner request; not started. An independent reimplementation is a future retention exercise.
 Earlier timer instructions, pending work, and original full-scope assessment
 criteria below are historical, superseded by this completion checkpoint.
 
