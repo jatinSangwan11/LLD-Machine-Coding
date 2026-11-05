@@ -5,7 +5,7 @@ Last updated: 2026-11-05
 ## Active problem
 
 - Problem: Job Scheduler (#5)
-- Stage: Configurable worker pool implemented at learner request
+- Stage: Deadline dispatcher and ready queue implemented at learner request
 - Mode: Interviewer, no timer started; learner drives implementation
 - Source: Mentor-authored original curriculum exercise
 - Baseline: In-memory Python scheduler, one-time jobs, one worker by default,
@@ -16,7 +16,9 @@ Last updated: 2026-11-05
   concurrent submissions/status queries, and graceful shutdown that closes
   submissions and drains every accepted job at its scheduled time or later.
   Manual drain checks passed. See progress for the full Q&A.
-- Next: Learner traces the shared wait/select/run/publish flow,
+- Design: One deadline dispatcher, a FIFO ready queue, and a fixed worker
+  pool. Slot reservations keep waiting jobs in deadline order when saturated.
+- Next: Learner traces the submit/dispatch/run/publish flow,
   then adds focused tests and explains the lock boundaries.
 - Detailed checkpoint: problems/05_job_scheduler/progress.md
 

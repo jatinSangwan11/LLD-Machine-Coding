@@ -2,7 +2,7 @@
 
 Last updated: 2026-11-05
 
-- Stage: Baseline and configurable worker pool implemented at learner request
+- Stage: Deadline dispatcher and ready queue implemented at learner request
 - Source: Mentor-authored exercise from the original curriculum
 - Mode: Interviewer; learner drives the design and implementation; no timer started
 - Implementation: Mentor wrote `job_scheduler.py` at explicit request
@@ -48,7 +48,7 @@ retries, and persistence remain outside scope.
 
 ## Next action
 
-Learner traces `submit_job` → `_take_due_job` → `_worker_loop` → `check_status`,
+Learner traces `submit_job` → `_dispatch_loop` → ready queue → `_worker_loop`,
 then writes focused tests and explains the lock boundaries. Parking Lot's final
 review remains separate. Independent scheduler implementation is not demonstrated.
 
@@ -91,3 +91,18 @@ Shutdown joins every worker outside the lock. Manual checks passed overlapping
 callbacks with two workers, a queued third job, no early execution, rejection
 of submissions during draining, complete pool shutdown, invalid worker counts,
 and unchanged FIFO in the default one-worker mode. No permanent tests added.
+
+## Dispatcher and ready-queue extension
+
+At learner request, split deadline scheduling from execution. One dispatcher owns
+timed waiting on the heap; workers block on a thread-safe `Queue`. The dispatcher
+reserves a free worker slot and marks the earliest due job `RUNNING` under the
+condition lock before enqueueing it. With no free slot, jobs stay `PENDING` in
+the heap so an earlier submission can still take priority. Worker completion
+records the terminal status, returns the slot, and notifies the dispatcher.
+Shutdown drains the heap, sends one stop marker per worker from the dispatcher,
+and joins the dispatcher and workers outside the lock. FIFO applies to claims,
+not callback start/completion order. Manual assertions passed saturation and
+priority/FIFO, overlapping execution, no early start, `SystemExit` isolation,
+rejected submissions during shutdown, complete drain, and idle/repeated
+shutdown. No permanent tests added; `git diff --check` passed.
