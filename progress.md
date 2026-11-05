@@ -1,6 +1,6 @@
 # Machine-Coding Curriculum Progress
 
-Last updated: 2026-11-03
+Last updated: 2026-11-05
 
 ## Source of truth and scope
 
@@ -47,9 +47,9 @@ Notification System; Course Registration is distinct from Online Learning.
 | 1 | LRU Cache | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/lru-cache.md) + original curriculum | Completed with guidance; 4 tests pass; demo runs |
 | 2 | LFU Cache | Original curriculum | Completed with guidance; 7 tests pass; thread-safe get/put |
 | 3 | Stock Exchange — Order Matching | [Learner's actual interview challenge](problems/03_stock_exchange/problem.md) | Completed with guidance; reduced scope; 4 tests pass |
-| 4 | Parking Lot | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/parking-lot.md) + original curriculum | Started 2026-11-03; requirement clarification |
-| 5 | Elevator System | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/elevator-system.md) + original curriculum | Not started |
-| 6 | Job Scheduler | Original curriculum | Not started |
+| 4 | Parking Lot | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/parking-lot.md) + original curriculum | Implementation and 9 tests pass with guidance; final review pending |
+| 5 | Job Scheduler | Original curriculum | Started 2026-11-05; requirements clarified |
+| 6 | Elevator System | [Repository problem](https://github.com/ashishps1/awesome-low-level-design/blob/main/problems/elevator-system.md) + original curriculum | Not started |
 | 7 | Notification System | Original curriculum | Not started |
 | 8 | Rate Limiter | Original curriculum | Not started |
 | 9 | Meeting Room Scheduler | Original curriculum | Not started |
@@ -101,7 +101,8 @@ Notification System; Course Registration is distinct from Online Learning.
 
 LRU, LFU, and Stock Exchange completed with substantial guidance. Stock Exchange
 used reduced scope and mentor-written matching/tests; independent interview
-readiness is not demonstrated. Active problem: Parking Lot (#4), requirement clarification.
+readiness is not demonstrated. Parking Lot (#4) implementation/tests are complete with guidance; final review
+remains pending. Active problem: Job Scheduler (#5), requirements clarified.
 
 ## Cross-problem observations
 
@@ -110,3 +111,7 @@ reference solutions remain withheld until requested.
 
 On 2026-10-31 the learner inserted Stock Exchange — Order Matching as the next
 problem, using their supplied challenge. Total: 51 exercises and one final mock.
+
+On 2026-11-03 the learner moved Job Scheduler ahead of Elevator System. Job
+Scheduler is #5, planned 2026-11-04; Elevator is #6. Earlier relative-order notes
+are superseded by this explicit change.

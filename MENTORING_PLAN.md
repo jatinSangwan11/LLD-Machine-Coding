@@ -17,8 +17,8 @@ machine-coding rounds.
 2. LFU Cache
 3. Stock Exchange — Order Matching (user-added; planned 2026-11-01)
 4. Parking Lot
-5. Elevator
-6. Job Scheduler
+5. Job Scheduler (planned 2026-11-04)
+6. Elevator
 7. Notification System
 8. Rate Limiter
 9. Meeting Room Scheduler

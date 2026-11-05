@@ -1,11 +1,29 @@
 # Current Engineering Context
 
-Last updated: 2026-11-03
+Last updated: 2026-11-05
 
 ## Active problem
 
+- Problem: Job Scheduler (#5)
+- Stage: Configurable worker pool implemented at learner request
+- Mode: Interviewer, no timer started; learner drives implementation
+- Source: Mentor-authored original curriculum exercise
+- Baseline: In-memory Python scheduler, one-time jobs, one worker by default,
+  scheduled-time ordering, status lookup and failure isolation
+- Implementation/tests: `job_scheduler.py` implemented by mentor; focused
+  manual assertions passed; no permanent tests yet
+- Clarified: Configurable fixed worker pool, timezone-aware absolute times, FIFO ties on claim,
+  concurrent submissions/status queries, and graceful shutdown that closes
+  submissions and drains every accepted job at its scheduled time or later.
+  Manual drain checks passed. See progress for the full Q&A.
+- Next: Learner traces the shared wait/select/run/publish flow,
+  then adds focused tests and explains the lock boundaries.
+- Detailed checkpoint: problems/05_job_scheduler/progress.md
+
+## Previous problem checkpoint
+
 - Problem: Parking Lot (#4)
-- Stage: Contract and initial design discussed; ready for learner implementation
+- Stage: Session ended at learner request on 2026-11-03; implementation and tests complete
 - Mode: Interviewer presentation; no timer started
 - Source: ashishps1/awesome-low-level-design/problems/parking-lot.md, accessed
   2026-11-03 on main; exact commit unavailable. Requirements inspected.
@@ -13,11 +31,15 @@ Last updated: 2026-11-03
   exit release, availability, concurrent operations across entry/exit points.
 - Design: Spot/floor/ticket records, ParkingLot orchestration, numeric level/spot
   ordering, ticket and vehicle maps, per-type free-spot heaps, direct spot lookup.
-- Implementation/tests: Not started; no solution scaffolding created
+- Implementation/tests: Startup, locked entry/exit/availability implemented;
+  nine pytest cases passed, including three concurrent cases
 - Hints used: Identity/lifecycle corrections, duplicate request examples,
   free-spot index prompt; learner proposed heaps and vehicle tracking.
-- Next: Learner implements enums and data classes, then ParkingLot constructor;
-  review small checkpoints before entry/exit/availability. See progress for contract.
+- Next: Brief review of complexity, lock scope and invariants, then end-of-problem
+  assessment when Parking Lot is revisited. Job Scheduler is now active; Elevator
+  remains #6.
+- Assistance: Mentor supplied constructor corrections, operations and tests at
+  explicit request; independent coding readiness not demonstrated.
 - Detailed checkpoint: problems/04_parking_lot/progress.md
 - Previous: LRU, LFU, Stock Exchange completed with guidance; independence not
   demonstrated. Favor small hints and learner attempts before code assistance.
