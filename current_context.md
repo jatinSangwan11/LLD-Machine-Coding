@@ -1,11 +1,29 @@
 # Current Engineering Context
 
-Last updated: 2026-11-05
+Last updated: 2026-11-07
 
 ## Active problem
 
+- Problem: Elevator System (#6)
+- Stage: Compact interview solution implemented at learner request; explanation next
+- Mode: Assisted learning; no timer active
+- Primary files: problems/06_elevator_system/interview_elevator.py,
+  test_interview_elevator.py and INTERVIEW_SCOPE.md
+- Scope: Source/destination together, multiple elevators, FIFO complete rides,
+  idle/direction/proximity dispatch, explicit step, status and synchronized APIs
+- Explicitly omitted: kg/passenger model, separate hall/cabin calls, explicit
+  doors and intermediate batching. Original full requirements not complete.
+- Verification: Six compact-version pytest cases pass
+- Earlier reference: elevator_system.py and its six tests are preserved;
+  earlier full-scope design notes are historical for the compact attempt.
+- Assistance: Implementation and tests supplied by mentor at explicit request
+- Next: Learner traces compact request/dispatch/step/check flow before extensions
+- Detailed checkpoint: problems/06_elevator_system/progress.md
+
+## Previous Job Scheduler checkpoint
+
 - Problem: Job Scheduler (#5)
-- Stage: Deadline dispatcher and ready queue implemented at learner request
+- Stage: Session paused on 2026-11-05; dispatcher and ready queue implemented
 - Mode: Interviewer, no timer started; learner drives implementation
 - Source: Mentor-authored original curriculum exercise
 - Baseline: In-memory Python scheduler, one-time jobs, one worker by default,
@@ -21,6 +39,8 @@ Last updated: 2026-11-05
 - Next: Learner traces the submit/dispatch/run/publish flow,
   then adds focused tests and explains the lock boundaries.
 - Detailed checkpoint: problems/05_job_scheduler/progress.md
+- Follow-up: Bounded Job Scheduler — Backpressure and ThreadPoolExecutor (#13),
+  planned for the week of 2026-11-09; today's implementation is unchanged.
 
 ## Previous problem checkpoint
 
@@ -338,3 +358,28 @@ three concurrency cases). Covers allocation, compatibility, lifecycle, explicit
 failures, availability and config boundaries, contention and final invariants.
 Implementation unchanged; git diff --check passed. Next: review complexity and
 lock scope, then completion assessment when learner requests wrap-up.
+
+Latest Elevator checkpoint: learner chose kg capacity and explicit step-based
+simulation. Unboarded passengers remain waiting. A movement tick advances at
+most one floor and opens doors at a service stop; a following tick exits/boards
+and closes without movement. Accepted direction/proximity policy recorded in
+problems/06_elevator_system/progress.md. No implementation yet. Next: a complete
+ride walkthrough before entities/APIs and data structures. Edge cases and
+passenger input details still need concrete contracts before coding.
+
+Latest Elevator code checkpoint: at explicit request added only initial data
+classes/enums in problems/06_elevator_system/elevator_system.py. Import and
+constructor smoke checks pass. No elevator/system behavior or permanent tests
+yet. Next: review data definitions, then learner proposes Elevator state.
+
+Latest Elevator checkpoint: at learner request implemented Elevator constructor
+with ID/floor/status/direction/doors/load, per-instance heaps/sets, onboard map
+and destination map. Smoke checks passed. Movement and system orchestration
+remain unimplemented. Next: stop management helpers and then step behavior.
+
+Latest Elevator checkpoint supersedes constructor-only notes: at explicit learner
+request implemented Elevator public assign_pickup/select_destination/step/snapshot
+and helpers, with StepResult boarding/reached/refused events. Six focused pytest
+tests pass. Building-wide ElevatorSystem dispatch/reassignment remains pending.
+Recorded sourced comparison of top-down and bottom-up approaches in Elevator
+progress. Next: explain public contract and ride flow before system implementation.

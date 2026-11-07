@@ -22,14 +22,15 @@ Read:
 LRU, LFU, and Stock Exchange completed with guidance. Stock Exchange covers a
 single-stock in-memory engine with four passing tests; original file/CLI and
 multi-stock scope was removed by the learner. Parking Lot (#4) was implemented with guidance; nine tests pass and its final
-review is pending. Current problem: Job Scheduler (#5), requirements clarified.
-Elevator System (#6) follows.
+review is pending. Job Scheduler (#5) was implemented with guidance; manual checks pass and
+permanent tests are pending. Current problem: Elevator System (#6), compact reduced-scope solution with
+guidance; six tests pass. See problems/06_elevator_system/INTERVIEW_SCOPE.md.
 
 ## Curriculum reference
 
 [ashishps1/awesome-low-level-design](https://github.com/ashishps1/awesome-low-level-design)
 is the source of truth for covered requirements and reference solution reviews.
-The merged curriculum has 51 unique exercises and one final mock.
+The merged curriculum has 52 exercises and one final mock.
 See `progress.md` for the complete sequence, source links, and reference policy.
 
 ## Technical baseline

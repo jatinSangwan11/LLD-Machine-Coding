@@ -24,9 +24,11 @@ machine-coding rounds.
 9. Meeting Room Scheduler
 10. Vending Machine
 11. Splitwise
-12–42. Remaining repository LLD problems, including solution-only topics
-43–51. Repository-linked concurrency exercises
-52. Full random machine-coding mock
+12. Stack Overflow
+13. Bounded Job Scheduler — Backpressure and ThreadPoolExecutor (week of 2026-11-09)
+14–43. Remaining repository LLD problems, including solution-only topics
+44–52. Repository-linked concurrency exercises
+53. Full random machine-coding mock
 
 The exact consolidated order and source links are maintained in `progress.md`.
 On 2026-10-30 the learner expanded the scope to every problem in

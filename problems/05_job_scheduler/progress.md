@@ -2,7 +2,7 @@
 
 Last updated: 2026-11-05
 
-- Stage: Deadline dispatcher and ready queue implemented at learner request
+- Stage: Session paused on 2026-11-05; dispatcher and ready queue implemented
 - Source: Mentor-authored exercise from the original curriculum
 - Mode: Interviewer; learner drives the design and implementation; no timer started
 - Implementation: Mentor wrote `job_scheduler.py` at explicit request
@@ -48,9 +48,11 @@ retries, and persistence remain outside scope.
 
 ## Next action
 
-Learner traces `submit_job` → `_dispatch_loop` → ready queue → `_worker_loop`,
-then writes focused tests and explains the lock boundaries. Parking Lot's final
-review remains separate. Independent scheduler implementation is not demonstrated.
+On return, review the dispatcher/worker flow and lock boundaries, then add
+focused permanent tests if continuing this exercise. Manual verification passed;
+the mentor supplied the implementation at the learner's request. Independent
+scheduler implementation is not demonstrated. The bounded/executor extension
+is separate at #13, planned for the week of 2026-11-09.
 
 ## Design checkpoint
 
@@ -106,3 +108,16 @@ not callback start/completion order. Manual assertions passed saturation and
 priority/FIFO, overlapping execution, no early start, `SystemExit` isolation,
 rejected submissions during shutdown, complete drain, and idle/repeated
 shutdown. No permanent tests added; `git diff --check` passed.
+
+## Follow-up exercise: Bounded Job Scheduler — Backpressure and ThreadPoolExecutor
+
+Added to the curriculum at #13 for the week of 2026-11-09 at learner request.
+Keep today's scheduler as the starting point. Limit the scheduler to two
+accepted jobs that have not finished, across pending, ready, and running states.
+Reject a third submission before issuing an ID and free capacity after success
+or failure. Explore `Queue(maxsize=2)` and `PriorityQueue(maxsize=2)` as local
+queue limits, including why they cannot enforce the shared budget and how
+deadline inspection works if the pending structure changes. Implement and
+compare a `ThreadPoolExecutor` variant with today's explicit worker threads.
+Preserve deadline/FIFO dispatch, failure reporting, and graceful draining.
+Extension not started; no implementation changes made.

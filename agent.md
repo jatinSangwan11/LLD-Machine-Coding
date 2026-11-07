@@ -38,9 +38,8 @@ status or cross-problem observations.
 
 ## Active sequence
 
-Follow the consolidated 52-item sequence in `progress.md`: the original first
-ten problems plus the user-added Stock Exchange at #3, remaining repository
-problems, concurrency exercises, and final mock.
+Follow the consolidated 53-item sequence in `progress.md`, including the
+user-added Stock Exchange at #3 and Bounded Job Scheduler extension at #13.
 
 The learner selected
 [ashishps1/awesome-low-level-design](https://github.com/ashishps1/awesome-low-level-design)
